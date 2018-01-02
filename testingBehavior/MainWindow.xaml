@@ -1,0 +1,23 @@
+﻿<Window x:Class="testingBehavior.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:testingBehavior"
+        mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:b="clr-namespace:testingBehavior.beh"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Orientation="Vertical">
+        <ComboBox Name="ComboBox" >
+            <ComboBoxItem Content="first"/>
+            <ComboBoxItem Content="Second"/>
+        </ComboBox>
+        <TextBox>
+            <i:Interaction.Behaviors>
+                <b:TBBehavior SelectedInt="{Binding ElementName=ComboBox, Path=SelectedIndex}" FirstValue="First" SecondValue="Second"></b:TBBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        <TextBox Text="{Binding ElementName=ComboBox, Path=SelectedIndex}"/>
+    </StackPanel>
+</Window>
